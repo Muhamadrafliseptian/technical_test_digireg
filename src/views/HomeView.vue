@@ -10,8 +10,10 @@
                         <span class="border-top border-5 border-success">Welcome</span> to Plant Goodness
                     </h1>
                     <p class="lead">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit assumenda quia eum neque numquam. Illo a
-                        molestiae placeat nostrum, eos recusandae, ducimus perspiciatis, hic tempore distinctio vero excepturi
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit assumenda quia eum neque numquam.
+                        Illo a
+                        molestiae placeat nostrum, eos recusandae, ducimus perspiciatis, hic tempore distinctio vero
+                        excepturi
                         optio aspernatur.
                     </p>
                 </div>
@@ -54,13 +56,15 @@
                         <!-- melakukan perulangan untuk menampilkan pohon ke dalam map -->
                         <template v-for="data in trees">
                             <!-- l-marker untuk menampilkan foto dalam bentuk gambar -->
-                            <l-marker
-                                :lat-lng="[data.geoPoint2D ? data.geoPoint2D.lat : '', data.geoPoint2D ? data.geoPoint2D.lon : '']" :icon="treesIcon">
+                            <l-marker :icon="treesIcon"
+                                :lat-lng="[data.geoPoint2D ? data.geoPoint2D.lat : '', data.geoPoint2D ? data.geoPoint2D.lon : '']">
                                 <!-- l-popup menampilkan detail dari pohon untuk ditampilkan ke dalam map -->
                                 <l-popup :options="popupOptions">
-                                    <p class="mb-0"><IconComponent icon="fas fa-seedling"/> {{ data.commonName }}</p>
+                                    <p class="mb-0">
+                                        <IconComponent icon="fas fa-seedling" /> {{ data.commonName }}
+                                    </p>
                                     <p>
-                                        <IconComponent icon="fas fa-calendar"/>
+                                        <IconComponent icon="fas fa-calendar" />
                                         {{ data.datePlanted }}
                                     </p>
                                 </l-popup>
@@ -75,8 +79,10 @@
                         Where is Our <span class="text-success">Plantation</span> Located?
                     </h1>
                     <p class="lead">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit assumenda quia eum neque numquam. Illo a
-                        molestiae placeat nostrum, eos recusandae, ducimus perspiciatis, hic tempore distinctio vero excepturi
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit assumenda quia eum neque numquam.
+                        Illo a
+                        molestiae placeat nostrum, eos recusandae, ducimus perspiciatis, hic tempore distinctio vero
+                        excepturi
                         optio aspernatur.
                     </p>
                 </div>
@@ -91,8 +97,8 @@ import IconComponent from '../components/card/IconComponent.vue';
 import ButtonComponent from '../components/button/ButtonComponent.vue';
 //menggunakan library leaflet untuk menampilkan map
 import "leaflet/dist/leaflet.css";
-import { LMap, LTileLayer, LMarker, LPopup, LCircle } from "@vue-leaflet/vue-leaflet";
-import treesMarker from '../assets/tree.png'
+import { LMap, LTileLayer, LMarker, LPopup, LCircle, LIcon } from "@vue-leaflet/vue-leaflet";
+import treesMarker from '../assets/kwanzan.png'
 export default {
     data() {
         return {
@@ -129,6 +135,7 @@ export default {
         LMarker,
         LPopup,
         LCircle,
+        LIcon,
         CardComponent,
         IconComponent,
         ButtonComponent
@@ -143,8 +150,8 @@ export default {
     },
     methods: {
         //method untuk pindah halaman ke type tree
-        goTo(){
-            this.$router.push({name: 'TypeTree'})
+        goTo() {
+            this.$router.push({ name: 'TypeTree' })
         },
         //method untuk fetching data pohon dengan tipe getData
         getData() {
@@ -152,7 +159,7 @@ export default {
             let url = [
                 '?limit=100', {}
             ]
-            this.$store.dispatch(type, url).then((response)=>{
+            this.$store.dispatch(type, url).then((response) => {
                 this.trees = response.data.results
             })
         },
@@ -174,7 +181,7 @@ export default {
             return maxDistance;
         },
         //method untuk melakukan perubahan icon default marker
-        customIcon(){
+        customIcon() {
             this.treesIcon = L.icon({
                 iconUrl: treesMarker,
                 iconSize: [40, 45]
@@ -197,5 +204,4 @@ export default {
     bottom: 0;
     left: 0;
     right: 0;
-}
-</style>
+}</style>
