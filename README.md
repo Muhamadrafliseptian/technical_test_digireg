@@ -1,3 +1,6 @@
+#tutorial penggunaan
+untuk melihat area pohon, dapat menekan menu type tree pada card. kemudian pilih nama pohonnya
+
 # technical_test_digireg
 
 This template should help get you started developing with Vue 3 in Vite.
